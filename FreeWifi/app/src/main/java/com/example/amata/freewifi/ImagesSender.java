@@ -24,6 +24,9 @@ public class ImagesSender {
             //Do not send the same image if already sent
             if(!alreadySent) {
                 try {
+                    //Make a sleep so that the logs are not populated with much
+                    //information about sending images to a server.
+                    Thread.sleep(2000);
 
                     RequestParams params = new RequestParams();
                     params.put("client_id", clientId);
