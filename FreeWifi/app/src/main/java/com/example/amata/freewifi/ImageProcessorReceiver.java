@@ -16,7 +16,7 @@ public class ImageProcessorReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.d("PROCESSOR RECEIVER", "START");
         List<File> imagesFromSd = ImagesReader.getImagesFromSd();
-        ImagesSender.sendImages(imagesFromSd, Installation.id(context));
+        ImagesSender.sendImages(imagesFromSd, context);
         Log.d("PROCESSOR RECEIVER", "END");
     }
 }
