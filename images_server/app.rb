@@ -1,5 +1,7 @@
 require 'sinatra'
 
+set :bind, '0.0.0.0'
+
 post '/images' do
   client_id = params["client_id"]
   user_dir = FileUtils.mkdir_p("./images/#{client_id}")[0]

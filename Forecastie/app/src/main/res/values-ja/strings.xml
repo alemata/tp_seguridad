@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Forecastie</string>
+
+    <string name="action_search">検索</string>
+    <string name="action_refresh">更新</string>
+    <string name="action_settings">設定</string>
+    <string name="action_about">アプリについて</string>
+
+    <string name="wind">風力</string>
+    <string name="pressure">気圧</string>
+    <string name="humidity">湿度</string>
+
+    <string name="search_title">都市の検索</string>
+
+    <string name="setting_speedUnits">風速の単位</string>
+    <string name="setting_tempUnits">気温の単位</string>
+    <string name="setting_pressureUnits">気圧の単位</string>
+</resources>

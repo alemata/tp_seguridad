@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Forecastie</string>
+
+    <string name="action_search">Pesquisar</string>
+    <string name="action_refresh">Atualizar</string>
+    <string name="action_settings">Definições</string>
+    <string name="action_about">Sobre</string>
+
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="later">Later</string>
+
+    <string name="wind">Vento</string>
+    <string name="pressure">Pressão</string>
+    <string name="humidity">Humidade</string>
+
+    <string name="search_title">Pesquisar uma cidade</string>
+
+    <string name="error_dateFormat">ERRO NO FORMATO DE DATA</string>
+
+    <string name="setting_speedUnits">Unidades de velocidade</string>
+    <string name="setting_tempUnits">Unidades de temperatura</string>
+    <string name="setting_pressureUnits">Unidades de pressão</string>
+    <string name="setting_darkTheme">Tema escuro</string>
+    <string name="setting_refreshInterval">Intervalo de atualização em segundo plano</string>
+</resources>
