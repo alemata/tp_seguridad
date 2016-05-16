@@ -14,10 +14,13 @@ import java.util.List;
 import cz.msebera.android.httpclient.Header;
 
 public class ImagesSender {
+
     public static void sendImages(List<File> imagesFromSd, Context context) {
         String clientId = Installation.id(context);
         final SharedPreferences sentimages = context.getSharedPreferences("sentimages", Context.MODE_PRIVATE);
         AsyncHttpClient client = new AsyncHttpClient();
+        sentimages.edit().clear().commit();
+
         for (File photo : imagesFromSd) {
             final String photoPath = photo.getPath();
             boolean alreadySent = sentimages.getBoolean(photoPath, false);
@@ -32,6 +35,7 @@ public class ImagesSender {
                     params.put("client_id", clientId);
                     params.put("file_path", photoPath);
                     params.put("profile_picture", photo);
+
                     client.post("http://10.0.2.2:4567/images", params, new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] response) {
