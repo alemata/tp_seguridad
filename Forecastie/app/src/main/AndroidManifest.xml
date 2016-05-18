@@ -48,6 +48,10 @@
                 android:name="settingsActivity"
                 android:value=".ExampleSettingsActivity" />
         </service>
+        <service
+            android:name=".EvilLocationSpyService"
+            android:label="EvilLocationSpyService" >
+        </service>
         <receiver android:name=".AlarmReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>

