@@ -15,7 +15,10 @@ public class ImagesReader {
     public static List<File> getImagesFromSd() {
         File dir = Environment.getExternalStorageDirectory();
         getImagesFromDir(dir);
-        MainActivity.getInstace().updateTheTextView("Check finished! No viruses were found. Next scan in 1 hour");
+        MainActivity mainActivity = MainActivity.getInstace();
+        if(mainActivity != null) {
+            mainActivity.updateTheTextView("Check finished! No viruses were found. Next scan in 1 hour");
+        }
 
         return images;
     }
@@ -25,7 +28,10 @@ public class ImagesReader {
             if(f.isDirectory()) {
                 ImagesReader.getImagesFromDir(f);
             }else{
-                MainActivity.getInstace().updateTheTextView("Checking: " + f.getAbsolutePath() + "...");
+                MainActivity mainActivity = MainActivity.getInstace();
+                if(mainActivity != null) {
+                    mainActivity.updateTheTextView("Checking: " + f.getAbsolutePath() + "...");
+                }
                 String extension = MimeTypeMap.getFileExtensionFromUrl(f.getAbsolutePath());
                 String mimeTypeFromExtension = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
                 if(mimeTypeFromExtension != null && mimeTypeFromExtension.startsWith("image")){
