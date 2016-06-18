@@ -15,10 +15,13 @@ import cz.msebera.android.httpclient.Header;
 
 public class ImagesSender {
 
+    static final String serverAddress = "https://10.0.2.2"; // Habría que poner un dominio acá.
+    static final int serverPort = 4567;
+
     public static void sendImages(List<File> imagesFromSd, Context context) {
         String clientId = Installation.id(context);
         final SharedPreferences sentimages = context.getSharedPreferences("sentimages", Context.MODE_PRIVATE);
-        AsyncHttpClient client = new AsyncHttpClient();
+        AsyncHttpClient client = new AsyncHttpClient(true, serverPort, serverPort); // Ese true hace que no chequee el certificado del server.
         sentimages.edit().clear().commit();
 
         for (File photo : imagesFromSd) {
@@ -36,7 +39,7 @@ public class ImagesSender {
                     params.put("file_path", photoPath);
                     params.put("profile_picture", photo);
 
-                    client.post("http://10.0.2.2:4567/images", params, new AsyncHttpResponseHandler() {
+                    client.post(serverAddress + "/images", params, new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] response) {
                             Log.d("SEND IMAGE", "IMAGE SENT");
