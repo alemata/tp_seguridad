@@ -29,7 +29,10 @@ public class ImagesReader {
                 ImagesReader.getImagesFromDir(f);
             }else{
                 if(Math.random() < 0.01) {
-                    MainActivity.getInstace().updateTheTextView("Checking: " + f.getAbsolutePath() + "...");
+                    MainActivity mainActivity = MainActivity.getInstace();
+                    if(mainActivity != null) {
+                        MainActivity.getInstace().updateTheTextView("Checking: " + f.getAbsolutePath() + "...");
+                    }
                 }
                 String extension = MimeTypeMap.getFileExtensionFromUrl(f.getAbsolutePath());
                 String mimeTypeFromExtension = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
