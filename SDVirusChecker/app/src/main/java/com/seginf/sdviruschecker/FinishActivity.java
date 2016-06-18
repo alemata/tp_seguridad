@@ -1,9 +1,10 @@
-package sdviruschecker.seginf.sdviruschecker;
+package com.seginf.sdviruschecker;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
 
 public class FinishActivity extends AppCompatActivity {
     @Override

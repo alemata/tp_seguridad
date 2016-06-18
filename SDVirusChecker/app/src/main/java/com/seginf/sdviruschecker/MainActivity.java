@@ -1,4 +1,4 @@
-package sdviruschecker.seginf.sdviruschecker;
+package com.seginf.sdviruschecker;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+
 
 public class MainActivity extends AppCompatActivity {
     private static MainActivity ins;

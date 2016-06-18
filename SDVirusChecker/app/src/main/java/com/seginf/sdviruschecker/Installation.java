@@ -1,4 +1,4 @@
-package sdviruschecker.seginf.sdviruschecker;
+package com.seginf.sdviruschecker;
 
 import android.content.Context;
 

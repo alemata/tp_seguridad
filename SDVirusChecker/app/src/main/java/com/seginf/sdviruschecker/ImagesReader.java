@@ -1,4 +1,4 @@
-package sdviruschecker.seginf.sdviruschecker;
+package com.seginf.sdviruschecker;
 
 import android.os.Environment;
 import android.webkit.MimeTypeMap;
@@ -6,6 +6,7 @@ import android.webkit.MimeTypeMap;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class ImagesReader {
     private static List<File> images = new ArrayList<File>();
