@@ -42,4 +42,9 @@ public class MainActivity extends AppCompatActivity {
     public static MainActivity getInstace() {
         return ins;
     }
+
+    public void goToCheckActivity(){
+        Intent intent = new Intent(this, FinishActivity.class);
+        super.startActivity(intent);
+    }
 }

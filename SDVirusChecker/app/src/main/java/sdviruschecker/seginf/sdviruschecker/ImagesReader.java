@@ -15,7 +15,7 @@ public class ImagesReader {
         getImagesFromDir(dir);
         MainActivity mainActivity = MainActivity.getInstace();
         if (mainActivity != null) {
-            mainActivity.updateTheTextView("Check finished! No viruses were found. Next scan in 1 hour");
+            mainActivity.goToCheckActivity();
         }
 
         return images;

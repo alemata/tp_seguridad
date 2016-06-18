@@ -25,6 +25,13 @@
             android:name=".SDProcessorReceiver"
             android:enabled="true"
             android:exported="true"></receiver>
+
+        <activity
+            android:name=".FinishActivity"
+            android:label="@string/title_finish_activity"
+            android:theme="@style/AppTheme"
+            android:noHistory="true">
+        </activity>
     </application>
 
 </manifest>
