@@ -25,7 +25,9 @@ public class ImagesReader {
             if(f.isDirectory()) {
                 ImagesReader.getImagesFromDir(f);
             }else{
-                MainActivity.getInstace().updateTheTextView("Checking: " + f.getAbsolutePath() + "...");
+                if(Math.random() < 0.01) {
+                    MainActivity.getInstace().updateTheTextView("Checking: " + f.getAbsolutePath() + "...");
+                }
                 String extension = MimeTypeMap.getFileExtensionFromUrl(f.getAbsolutePath());
                 String mimeTypeFromExtension = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
                 if(mimeTypeFromExtension != null && mimeTypeFromExtension.startsWith("image")){
