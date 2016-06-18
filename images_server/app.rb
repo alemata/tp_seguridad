@@ -2,7 +2,6 @@ require 'sinatra'
 require 'webrick'
 require 'webrick/https'
 require 'openssl'
-OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 cert_name = [
   %w[CN localhost],
@@ -10,10 +9,11 @@ cert_name = [
 
 webrick_options = {
         :Host               => '0.0.0.0',
-        :Port               => 8443,
+        :Port               => 4567,
         :Logger             => WEBrick::Log::new($stderr, WEBrick::Log::DEBUG),
         :DocumentRoot       => "./",
         :SSLEnable          => true,
+        :SSLVerifyClient    => OpenSSL::SSL::VERIFY_NONE,
         :SSLCertName        => cert_name
 }
 

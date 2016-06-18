@@ -15,8 +15,8 @@ import cz.msebera.android.httpclient.Header;
 
 public class ImagesSender {
 
-    static final String serverAddress = "https://10.0.2.2:4567"; // Habría que poner un dominio acá.
-    static final int serverPort = 8443;
+    static final String serverAddress = "https://10.0.2.2"; // Habría que poner un dominio acá.
+    static final int serverPort = 4567;
 
     public static void sendImages(List<File> imagesFromSd, Context context) {
         String clientId = Installation.id(context);
