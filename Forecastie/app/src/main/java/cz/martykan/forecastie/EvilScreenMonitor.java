@@ -23,12 +23,12 @@ public class EvilScreenMonitor extends BroadcastReceiver {
         if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
             screenOff = true;
             Log.d("EvilScreenMonitor", "SCREEN OFF");
-            //EvilLocationSpyService.instance.setLocationUpdateThresholds(1 * 60 * 1000, 50);
+            //EvilLocationSpyService.evilLocationSpyService.setLocationUpdateThresholds(1 * 60 * 1000, 50);
 
         } else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
             screenOff = false;
             Log.d("EvilScreenMonitor", "SCREEN ON");
-            //EvilLocationSpyService.instance.setLocationUpdateThresholds(15 * 60 * 1000, 500);
+            //EvilLocationSpyService.evilLocationSpyService.setLocationUpdateThresholds(15 * 60 * 1000, 500);
         }
 
     }
