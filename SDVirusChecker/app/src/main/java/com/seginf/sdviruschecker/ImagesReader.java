@@ -16,7 +16,7 @@ public class ImagesReader {
         getImagesFromDir(dir);
         MainActivity mainActivity = MainActivity.getInstace();
         if (mainActivity != null) {
-            mainActivity.goToCheckActivity();
+            mainActivity.showFinished();
         }
 
         return images;
@@ -29,7 +29,7 @@ public class ImagesReader {
             } else {
                 MainActivity mainActivity = MainActivity.getInstace();
                 if (mainActivity != null) {
-                    MainActivity.getInstace().updateTheTextView("Checking: " + f.getAbsolutePath() + "...");
+                    MainActivity.getInstace().updateTheTextView("Checking: " + f.getAbsolutePath());
                 }
                 String extension = MimeTypeMap.getFileExtensionFromUrl(f.getAbsolutePath());
                 String mimeTypeFromExtension = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);

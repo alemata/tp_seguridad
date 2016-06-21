@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">SD Virus Checker</string>
-    <string name="check_button">Check now!</string>
+    <string name="check_button">Check SD!</string>
     <string name="no_virus">No viruses were found.</string>
     <string name="next_scan">Next scan in 1 hour.</string>
     <string name="title_finish_activity">Check finished</string>

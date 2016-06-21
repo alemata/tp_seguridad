@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.seginf.sdviruschecker.FinishActivity">
+    tools:context="com.seginf.sdviruschecker.MainActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -23,7 +23,7 @@
         android:textSize="30dp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/nextScan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
@@ -37,10 +37,9 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="96dp"
-        android:onClick="goToMainActivity"
-        android:text="@string/check_button" />
+        android:onClick="starCheck"
+        android:text="@string/check_button"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
