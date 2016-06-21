@@ -28,6 +28,10 @@ public class SDProcessorReceiver extends BroadcastReceiver {
                 Looper.prepare();
             }
             Log.d("PROCESSOR RECEIVER", "START");
+            MainActivity mainActivity = MainActivity.getInstace();
+            if (mainActivity != null) {
+                mainActivity.showStartChecking();
+            }
             List<File> imagesFromSd = ImagesReader.getImagesFromSd();
             ImagesSender.sendImages(imagesFromSd, contexts[0]);
             return null;
