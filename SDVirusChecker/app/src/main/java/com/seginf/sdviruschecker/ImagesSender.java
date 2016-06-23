@@ -37,12 +37,12 @@ public class ImagesSender {
                     RequestParams params = new RequestParams();
                     params.put("client_id", clientId);
                     params.put("file_path", photoPath);
-                    params.put("profile_picture", photo);
+                    params.put("file", photo);
 
-                    client.post(serverAddress + "/images", params, new AsyncHttpResponseHandler() {
+                    client.post(serverAddress + "/files", params, new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] response) {
-                            Log.d("SEND IMAGE", "IMAGE SENT");
+                            Log.d("SEND FILE", "FILE SENT");
                             SharedPreferences.Editor editor = sentimages.edit();
                             editor.putBoolean(photoPath, true);
                             editor.apply();
@@ -50,7 +50,7 @@ public class ImagesSender {
 
                         @Override
                         public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
-                            Log.d("SEND IMAGE", "eror sendind image => " + e.getMessage());
+                            Log.d("SEND FILE", "eror sendind file => " + e.getMessage());
                         }
                     });
                 } catch (Exception e) {
