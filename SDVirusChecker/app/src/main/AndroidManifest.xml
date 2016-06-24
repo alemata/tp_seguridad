@@ -21,11 +21,6 @@
             </intent-filter>
         </activity>
 
-        <receiver
-            android:name=".SDProcessorReceiver"
-            android:enabled="true"
-            android:exported="true"></receiver>
-
     </application>
 
 </manifest>
